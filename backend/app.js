@@ -7,10 +7,10 @@ app.use(bodyParser.json());
 
 const port = 3000
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname+'/pages/assets'));
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/pages/index.html");
+  res.sendFile(__dirname + "/pages/login/index.html");
 });
 const authRoute = require('./routes/auth')
 const errorMiddleware = require("./middleware/error")
@@ -22,5 +22,5 @@ app.use(errorMiddleware)
 
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Server Running on ${port}`)
 })
