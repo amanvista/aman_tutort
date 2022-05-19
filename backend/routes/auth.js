@@ -1,14 +1,17 @@
 const generateOtp = require('../utils/otpGenerator')
 const bcrypt = require("bcryptjs");
-const catchAsyncErrors = require("../middleware/catchAsyncError")
+const catchAsyncErrors = require("../middleware/catchAsyncError");
+const bodyParser = require('body-parser');
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 
 
 const router = require('express').Router()
 
-router.post('/register', catchAsyncErrors(async (req,res)=>{
-     const {username, password} = req.body
+router.post('/register', urlencodedParser, catchAsyncErrors(async (req,res)=>{
+     const {email, password} = req.body
      console.log(await bcrypt.hash(password, 10))
-    res.send("Done")
+    res.send("Registered :)")
 }))
 
 router.post('/otp', (req,res)=>{
