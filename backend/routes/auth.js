@@ -1,25 +1,26 @@
-const createToken = require('../middleware/jwt')
-const catchAsyncError = require("../middleware/catchAsyncError")
 const generateOtp = require('../utils/otpGenerator')
+const bcrypt = require("bcryptjs");
+const catchAsyncErrors = require("../middleware/catchAsyncError")
+
 
 const router = require('express').Router()
 
-router.post('/register', (req,res)=>{
-    res.send('Register') 
+router.post('/register', catchAsyncErrors(async (req,res)=>{
+     const {username, password} = req.body
+     console.log(await bcrypt.hash(password, 10))
+    res.send("Done")
+}))
+
+router.post('/otp', (req,res)=>{
+    res.send({'OTP':generateOtp()}) 
 })
 
-
-router.post('/login', catchAsyncError(
-    async (req,res,next)=>{
-        const token = await createToken()
-    //res.header('auth-token', token).send(token)
-    res.send({'token':token}) 
-    }))
-
-router.get('/otp', catchAsyncError(
-    async (req,res,next)=>{
-        let otp = generateOtp()
-        res.send({'OTP':otp}) 
-    }))
-
+router.post('/login', (req,res)=>{
+    res.send({'OTP':generateOtp()}) 
+})
+router.post('/login', async (req,res)=>{
+    const token = awaitcreateToken()
+    res.header('auth-token', token).send(token)
+    res.send('Register') 
+})
 module.exports = router
