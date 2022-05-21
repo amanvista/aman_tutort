@@ -14,7 +14,18 @@
             <div class="logo">
                 <img src="images/logo.png" alt="logo">
             </div>
-            <form action="/api/user/login" method="post">
+            <form action="/api/user/register" method="post">
+                <div class="form-group">
+                    <div class="form-sub-group">
+                        <span class="icon">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
+                    <div class="form-sub-group">
+                        <input type="text" name="username" id="username" placeholder="Username">
+                        <label for="username">Username</label>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="form-sub-group">
                         <span class="icon">
@@ -32,24 +43,16 @@
                             <i class="fas fa-lock"></i>
                         </span>
                     </div>
-                    <div class="form-sub-group">
+                    <div class="form-sub-group" >
                         <input type="password" name="password" id="password" placeholder="Password">
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <div class="form-group-mini">
-                    <div class="form-sub-group-mini">
-                        <input type="checkbox" name="rememberme" id="rememberme">
-                        <label for="rememberme">Remember Me</label>
-                    </div>
-                    <div class="form-sub-group-mini">
-                        <a href="#" target="_blank" rel="noopener noreferrer">Forgot Password?</a>
-                    </div>
-                </div>
-                <div class="form-actions">
-                    <input type="submit" value="Login">
+                
+                <div class="form-actions" style="margin-top: 10px;">
+                    <input type="submit" value="Create Account">
                     <span>or</span>
-                    <a href="/rpage" class="register-btn">Create a FREE account</a>
+                    <a href="/" class="register-btn">Go to Login Page</a>
                 </div>
             </form>
             <div class="social-logins">
@@ -57,12 +60,6 @@
                 <div class="social-items">
                     <a href="#" class="google">
                         <img src="images/google.png" alt="google">
-                    </a>
-                    <a href="#" class="facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="twitter">
-                        <i class="fab fa-twitter"></i>
                     </a>
                 </div>
             </div>

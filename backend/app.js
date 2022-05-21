@@ -18,8 +18,8 @@ app.use(express.static(__dirname+'/pages/assets'));
 app.get("/", function(req,res){
     res.render('login')
 })
-app.get("/admin", function(req,res){
-    res.render('index')
+app.get("/rpage", function(req,res){
+    res.render('register')
 })
 
 
