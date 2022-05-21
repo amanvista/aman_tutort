@@ -23,14 +23,12 @@ app.get("/rpage", function(req,res){
 })
 
 
-app.get("/getdata", catchAsyncError(async function(req,res){
-    let result = await showDBResults('tutort',"select * from \"courseConfig\"" )
-    res.send(result)
-}))
 
 
-app.get("/login", (req, res) => {
-    res.sendFile(__dirname + "/pages/admin_page/admin_page.html");
+
+app.get("/adminpage", (req, res) => {
+    // res.sendFile(__dirname + "/pages/admin_page/admin_page.html");
+    res.render('adminPage')
   });
 
 

@@ -18,7 +18,7 @@ router.post('/login', urlencodedParser, catchAsyncErrors(async (req,res)=>{
     else {
         let dbEmail = result.rows[0].email, dbpwdHash = result.rows[0].pwdHash
         let passwordCheck = await bcrypt.compare(password, dbpwdHash)
-        if(passwordCheck) res.send("successful Login") 
+        if(passwordCheck) res.redirect('/adminpage');
         else res.send("Credentails Failed")
     }
 }))
@@ -27,7 +27,7 @@ router.post('/login', urlencodedParser, catchAsyncErrors(async (req,res)=>{
 router.post('/register', urlencodedParser, catchAsyncErrors(async (req,res)=>{
     const {username,email,password} = req.body
     const salt = await bcrypt.genSalt(10);
-    let hashedPassword = await bcrypt.hash(password, salt);
+    hashedPassword = await bcrypt.hash(password, salt);
     console.log(username,email,password)
     // console.log(email,password)
     const userQuery = `insert into admin("userName","email","pwdHash") values('${username}','${email}','${hashedPassword}');`
